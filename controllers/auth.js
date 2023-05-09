@@ -80,7 +80,8 @@ exports.signup = async (req, res, next) => {
 };
 
 exports.getDetailData = async (req, res, next) => {
-  const user = await User.findById(req.userId);
+  const user = await User.findById(req._id);
+  console.log(user);
   res.status(200).json({ message: 'fetch name', fullName: user.fullName });
 };
 

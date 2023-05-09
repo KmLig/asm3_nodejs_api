@@ -34,6 +34,7 @@ module.exports = (req, res, next) => {
     req._id = decodeToken._id;
     req.role = decodeToken.role;
     console.log('isAuth', req._id, req.role);
+    console.log('session', req.session.userId);
     next();
 }
 

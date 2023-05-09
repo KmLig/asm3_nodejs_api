@@ -22,7 +22,7 @@ exports.getMessageByRoomId = async (req, res, next) => {
 };
 
 exports.getRoomIdByUserId = async (req, res, next) => {
-    const user = await User.findById(req.userId);
+    const user = await User.findById(req._id);
     console.log(user);
     res.status(200).json({ message: 'get room ID by user ID', _id: user.chatRoomId ? user.chatRoomId : null });
 };
@@ -31,7 +31,7 @@ exports.createNewRoom = async (req, res, next) => {
         messages: []
     });
     const result = await room.save();
-    const user = await User.findById(req.userId);
+    const user = await User.findById(req._id);
     console.log('chat room id', result._id);
     user.chatRoomId = result._id;
     const updatedUser = await user.save();
