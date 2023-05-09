@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport(sendgridTransport({
   }
 }));
 
-process.env.SENDGRID;
+
 
 
 exports.order = async (req, res, next) => {

@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 
 const transporter = nodemailer.createTransport(sendgridTransport({
   auth: {
-    api_key: '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'
+    api_key: process.env.SENDGRID
   }
 }));
 
@@ -50,7 +50,8 @@ exports.postSignin = async (req, res, next) => {
       .status(200)
       .cookie('access_token', token, {
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-        httpOnly: false
+        httpOnly: false,
+        sameSite: 'none'
       })
       .json({ message: 'login success', userId: user._id.toString(), fullName: user.fullName, role: user.role });
   } catch (err) {

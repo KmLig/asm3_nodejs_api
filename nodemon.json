@@ -1,8 +1,0 @@
-{
-  "env": {
-    "MONGO_USER": "khiem-nodejs-complete",
-    "MONGO_PASSWORD": "tvZYSotk3K1Jm11N",
-    "MONGO_DEFAULT_DATABASE": "dicoshop",
-    "SENDGRID": "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"
-  }
-}
