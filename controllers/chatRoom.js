@@ -3,12 +3,12 @@ const User = require('../models/user');
 const ChatRoom = require('../models/chatRoom');
 
 exports.getMessageByRoomId = async (req, res, next) => {
-    console.log(req.role == 'sales');
-    if (req.role !== 'sales' && req.role !== 'admin') {
-        const error = new Error('Not athorised to use this chat app');
-        error.statusCode = 401;
-        throw error;
-    }
+    // console.log(req.role == 'sales');
+    // if (req.role !== 'sales' && req.role !== 'admin') {
+    //     const error = new Error('Not athorised to use this chat app');
+    //     error.statusCode = 401;
+    //     throw error;
+    // }
     try {
         const room = await ChatRoom.findById(req.query.roomId).populate('messages.userId');
         console.log('message by roomId', room);
