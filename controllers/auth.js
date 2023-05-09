@@ -51,7 +51,8 @@ exports.postSignin = async (req, res, next) => {
       .cookie('access_token', token, {
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
         httpOnly: false,
-        sameSite: 'none'
+        sameSite: 'none',
+        secure: true
       })
       .json({ message: 'login success', userId: user._id.toString(), fullName: user.fullName, role: user.role });
   } catch (err) {
