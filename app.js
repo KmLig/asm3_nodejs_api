@@ -29,6 +29,7 @@ const store = new MongoDBStore({
 app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+app.set("trust proxy", 1);
 
 const whitelist = ['http://localhost:3000', 'http://localhost:3001'];
 app.use(cors({
