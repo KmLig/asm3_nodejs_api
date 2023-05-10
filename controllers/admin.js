@@ -139,25 +139,26 @@ exports.addProduct = async (req, res, next) => {
       throw error;
     }
 
-    console.log('req files', req.files);
-    const imageArray = req.files.map(file => {
-      return file.path.replace("\\", "/");
-    });
-    console.log(imageArray);
-    console.log('req body', req.body);
-    const product = new Product();
-    product.name = req.body.name;
-    product.category = req.body.category;
-    product.long_desc = req.body.long_desc;
-    product.short_desc = req.body.short_desc;
-    product.price = req.body.price;
-    product.img1 = imageArray[0];
-    product.img2 = imageArray[1];
-    product.img3 = imageArray[2];
-    product.img4 = imageArray[3];
+    // console.log('req files', req.files);
+    // const imageArray = req.files.map(file => {
+    //   return file.path.replace("\\", "/");
+    // });
+    // console.log(imageArray);
+    // console.log('req body', req.body);
+    // const product = new Product();
+    // product.name = req.body.name;
+    // product.category = req.body.category;
+    // product.long_desc = req.body.long_desc;
+    // product.short_desc = req.body.short_desc;
+    // product.price = req.body.price;
+    // product.img1 = imageArray[0];
+    // product.img2 = imageArray[1];
+    // product.img3 = imageArray[2];
+    // product.img4 = imageArray[3];
 
-    const result = await product.save();
-    res.status(201).json({ message: 'Product created', result: result });
+    // const result = await product.save();
+    // res.status(201).json({ message: 'Product created', result: result });
+    res.status(201).json({ message: 'Product created' });
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
