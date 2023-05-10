@@ -15,14 +15,15 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 exports.postSignin = async (req, res, next) => {
 
-  const { email, password } = req.query;
-  console.log(req.query);
+  const { email, password } = req.body;
+  console.log(req.body);
+
   const errors = validationResult(req);
   try {
     const user = await User.findOne({ email: email });
     console.log(user);
     if (!user) {
-      const error = new Error('User with this email can be found.');
+      const error = new Error('User with this email can not be found.');
       error.statusCode = 401; //401 not auth or can 404 be used
       throw error;
     }

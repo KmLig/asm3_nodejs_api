@@ -26,7 +26,7 @@ exports.updateCart = async (req, res, next) => {
 };
 
 exports.getCart = async (req, res, next) => {
-  const user = await User.findById(req.userId).populate({ path: 'cart.items.productId' });
+  const user = await User.findById(req._id).populate({ path: 'cart.items.productId' });
   const items = user.cart.items.map((p) => {
     return {
       idUser: user._id,
@@ -42,7 +42,7 @@ exports.getCart = async (req, res, next) => {
 
 exports.deleteProduct = async (req, res, next) => {
   const prodId = req.query.idProduct;
-  const user = await User.findById(req.userId);
+  const user = await User.findById(req._id);
   const result = user.removeFromCart(prodId);
   res.status(200).json({ message: 'deleted product', result: result });
 };

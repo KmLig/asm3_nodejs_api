@@ -25,10 +25,10 @@ exports.order = async (req, res, next) => {
   // console.log(req.get('Cookie'));
   console.log(req.query);
   const { to, fullname, phone, address, idUser } = req.query;
-  const user = await User.findById(req.userId);
+  const user = await User.findById(req._id);
   let result;
   let removeCart;
-  if (user._id.toString() === req.userId) {
+  if (user._id.toString() === req._id) {
     const order = new Order({
       userId: user._id,
       cart: user.cart,
@@ -52,7 +52,7 @@ exports.order = async (req, res, next) => {
 
     transporter.sendMail({
       to: to,
-      from: 'phochieumotminh@gmail.com',
+      from: 'soundofthewind1102@gmail.com',
       subject: 'Place order successfully!',
       html: `
       <h1>Xin chào ${fullname}</h1>
@@ -93,7 +93,7 @@ exports.order = async (req, res, next) => {
 
 exports.histories = async (req, res, next) => {
   try {
-    const orders = await Order.find({ userId: req.userId }).populate('cart.items.productId');
+    const orders = await Order.find({ userId: req._id }).populate('cart.items.productId');
     if (!orders) {
       const error = new Error('Cound not find history');
       error.statusCode = 404;
