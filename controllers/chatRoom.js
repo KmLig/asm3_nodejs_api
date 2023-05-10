@@ -44,10 +44,10 @@ exports.createNewRoom = async (req, res, next) => {
 exports.addMessage = async (req, res, next) => {
     const { message, roomId, is_admin } = req.body;
     console.log('req body add message', req.body);
-    const room = await ChatRoom.findById(roomId);
+    const room = await ChatRoom.findById(roomId).populate('messages.userId');
     console.log(room);
     room.messages.push({
-        userId: req.userId,
+        userId: req._id,
         content: message,
         is_admin: is_admin
     });
