@@ -5,7 +5,7 @@ module.exports = {
         io = require('socket.io')(httpServer,
             {
                 cors: {
-                    origin: ['http://localhost:3000', 'http://localhost:3001']
+                    origin: ['http://localhost:3000', 'http://localhost:3001', 'https://clientasm3.netlify.app', 'https://adminasm3.netlify.app']
                 }
             });
         return io;
