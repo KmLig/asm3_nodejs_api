@@ -31,7 +31,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.set("trust proxy", 1); // need for deployment
 
-const whitelist = ['http://localhost:3000', 'http://localhost:3001'];
+const whitelist = ['http://localhost:3000', 'https://adminasm3.netlify.app'];
 app.use(cors({
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
